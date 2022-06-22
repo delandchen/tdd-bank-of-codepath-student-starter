@@ -82,8 +82,8 @@ export function testAddTransaction(App) {
 
   FeatureTestSuite.test(
     "The `AddTransaction` component creates a `handleOnFormFieldChange` function that takes a change event as its single argument." +
-      " That function then updates individual fields in the form using the `name` and `value` properties on `event.target`." +
-      " That function is passed to the `AddTransactionForm` as its `handleOnFormFieldChange` prop.",
+    " That function then updates individual fields in the form using the `name` and `value` properties on `event.target`." +
+    " That function is passed to the `AddTransactionForm` as its `handleOnFormFieldChange` prop.",
     async (ctx) => {
       //
       const proxyProps = buildProxy(ctx.AddTransactionFnProps)
@@ -201,11 +201,16 @@ export function testAddTransaction(App) {
         "text",
         "The AddTransaction.jsx component should render an input element with a name prop of `description` that gets passed the proper `type` prop."
       )
+      console.log("descriptionInput: ", descriptionInput.value);
+      console.log("sampleForm is: ", sampleForm.description);
       assert.equal(
         descriptionInput.value,
         sampleForm.description,
         "The AddTransaction.jsx component should render an input element with a name prop of `description` that gets passed a `value` prop equal to the `description` field of its `form` prop."
       )
+
+
+
 
       const categoryInput = container.querySelector("input[name='category']")
       assert.ok(
@@ -303,11 +308,11 @@ export function testAddTransaction(App) {
 
   FeatureTestSuite.test(
     "In the `Home.jsx` component, a `handleOnCreateTransaction` function is defined that starts by setting `isCreating` to `true`," +
-      " and then makes a `POST` request to the `/transactions` endpoint with the contents of the `newTransactionForm` as its body." +
-      " If anything goes wrong, it calls the `setError` function with the error and then sets `isCreating` to `false`." +
-      " Otherwise, it takes the new transaction returned from the API and adds it to the `transactions` array in state," +
-      " before resetting the `newTransactionForm` and setting `isCreating` back to `false`." +
-      " That function is passed to the `AddTransaction` component as its `handleOnSubmit` prop.",
+    " and then makes a `POST` request to the `/transactions` endpoint with the contents of the `newTransactionForm` as its body." +
+    " If anything goes wrong, it calls the `setError` function with the error and then sets `isCreating` to `false`." +
+    " Otherwise, it takes the new transaction returned from the API and adds it to the `transactions` array in state," +
+    " before resetting the `newTransactionForm` and setting `isCreating` back to `false`." +
+    " That function is passed to the `AddTransaction` component as its `handleOnSubmit` prop.",
     async (ctx) => {
       const proxyProps = buildProxy(ctx.HomeFnProps)
 
@@ -325,7 +330,7 @@ export function testAddTransaction(App) {
               <Home
                 {...proxyProps}
                 {...ctx.MockState}
-                // newTransactionForm={sampleTransactionForm}
+              // newTransactionForm={sampleTransactionForm}
               />
             )}
           </MockStateContext>
